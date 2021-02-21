@@ -1,0 +1,64 @@
+.main {
+  /* padding: 0px;
+  margin: 0px; */
+  height: 100vh;
+  width: 100vh;
+  background-color: rgb(212, 233, 220);
+}
+a {
+  text-decoration: none;
+}
+.title {
+  position: relative;
+  top: 20px;
+  left: 140px;
+  color: rgba(9, 71, 51, 0.685);
+}
+.addnew {
+  font-size: x-large;
+  position: relative;
+  left: 530px;
+  top: 30px;
+}
+.deletemult {
+  font-size: x-large;
+  position: relative;
+  left: 480px;
+  top: 40px;
+}
+.left {
+  position: relative;
+  left: 200px;
+  color: rgb(144, 211, 255);
+}
+table {
+  position: relative;
+  left: 300px;
+  top: 50px;
+  width: 700px;
+}
+.adding {
+  color: rgba(41, 41, 163, 0.664);
+  font-size: xx-large;
+}
+.icone {
+  /* padding-right: 10px; */
+  font-size: large;
+  color: rgba(61, 33, 219, 0.664);
+}
+.icond {
+  /* padding-right: 10px; */
+  font-size: large;
+  color: rgba(190, 15, 15, 0.644);
+}
+thead {
+  background-color: rgba(126, 93, 49, 0.589);
+}
+form {
+  position: relative;
+  top: 200px;
+  left: 100px;
+}
+button {
+  border: none;
+}

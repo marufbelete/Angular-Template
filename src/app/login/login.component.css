@@ -1,0 +1,16 @@
+.first {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(138, 59, 212);
+}
+input {
+  width: 400px;
+}
+button {
+  margin-left: 150px;
+}
+.ere {
+  color: rgba(255, 1, 1, 0.925);
+}

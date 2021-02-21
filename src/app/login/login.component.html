@@ -1,0 +1,30 @@
+<form #frm="ngForm" (ngSubmit)="submited(frm)">
+<div class="first">
+  <div class="second">
+    <div class="form-group">
+      <label for="named">Email
+        <input required pattern="beletemaruf@gmail.com" ngModel name="emai" #email="ngModel" id="named" type="text" class="form-control">
+      </label>
+    </div>
+    <div *ngIf="email.touched && !email.valid">
+      <div class="ere" *ngIf="email.errors?.required">email is required</div>
+      <div class="ere" *ngIf="email.errors?.pattern">email is not correct</div>
+      <div></div>
+    </div>
+
+    <div class="form-group">
+      <label for="passed">pass
+        <input  type="password" required pattern="maruf" ngModel name="passwor" #password="ngModel" id="passed" class="form-control">
+      </label>
+    </div>
+    <div *ngIf="password.touched && !password.valid">
+      <div class="ere" *ngIf="password.errors?.required">password is required</div>
+      <div class="ere" *ngIf="password.errors?.pattern">password is not correct</div>
+  </div>
+
+    <button class="btn btn-info">Log-in</button>
+  </div>
+</div>
+</form>
+
+

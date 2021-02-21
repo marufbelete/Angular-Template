@@ -1,0 +1,44 @@
+{
+  "Student": [
+    {
+      "id": 4444,
+      "name": "elsabet",
+      "clas": "B",
+      "course": {
+        "coursename": "c#",
+        "outof": 100,
+        "result": 95
+      }
+    },
+    {
+      "id": 2222,
+      "name": "belete",
+      "clas": "B",
+      "course": {
+        "coursename": "rubby",
+        "outof": 100,
+        "result": 80
+      }
+    },
+    {
+      "id": 3333,
+      "name": "aster",
+      "clas": "D",
+      "course": {
+        "coursename": "python",
+        "outof": 100,
+        "result": 70
+      }
+    },
+    {
+      "id": 12345,
+      "name": "MARUF BELETE",
+      "clas": "A",
+      "course": {
+        "coursename": "python",
+        "outof": 100,
+        "result": 99
+      }
+    }
+  ]
+}

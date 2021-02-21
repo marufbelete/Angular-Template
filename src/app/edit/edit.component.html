@@ -1,0 +1,38 @@
+
+<div class="fisrt">
+  <div class="second">
+    <div class="title">Edit student</div>
+    <form #formname="ngForm">
+      <div class="form-group" >
+        <label for="id">ID</label><input class="form-control" ngModel name="id" #ID="ngModel" id="id" type="number" [(ngModel)]="id">
+      </div>
+
+      <div class="form-group">
+        <label for="names">Name</label><input  class="form-control" ngModel name="name" #NamE="ngModel"  id="names" type="text" [(ngModel)]="name">
+      </div>
+
+      <div class="form-group">
+        <label for="classs">Classs</label><input  class="form-control" ngModel name="clas" #ClasS="ngModel"  id="classs" type="text" [(ngModel)]="clas">
+      </div>
+
+        <div ngModelGroup="course" #subform="ngModelGroup">
+          <div class="form-group">
+            <label for="courses">coursename</label><input  class="form-control" ngModel name="coursename" #CoursE="ngModel"  id="courses" type="text" [(ngModel)]="coursename">
+          </div>
+
+          <div class="form-group">
+            <label for="outs">Out-of</label><input  class="form-control" ngModel name="outof" #OuT="ngModel"  id="outs" type="number" [(ngModel)]="outof">
+          </div>
+
+          <div class="form-group">
+            <label for="results">Result</label><input  class="form-control" ngModel name="result" #ResulT="ngModel"  id="results" type="number" [(ngModel)]="result">
+          </div>
+
+        </div>
+      <a (click)="update(formname.value)" routerLink='/table'><button class="btn btn-info">Submit</button></a>
+    </form>
+
+  </div>
+</div>
+
+

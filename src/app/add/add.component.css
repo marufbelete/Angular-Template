@@ -1,0 +1,23 @@
+.first {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.second {
+  position: relative;
+  width: 500px;
+  height: 570px;
+  left: 450px;
+  top: 70px;
+  padding: 20px;
+  background-color: burlywood;
+}
+button {
+  margin-left: 170px;
+}
+.title {
+  color: rgb(46, 164, 243);
+  font-size: xx-large;
+  margin-left: 140px;
+}
