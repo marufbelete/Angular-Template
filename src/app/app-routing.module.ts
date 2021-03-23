@@ -9,15 +9,7 @@ const routes: Routes = [
 {path:'',
  component: LoginComponent},
 {path:'table',
- component:DiplaycrudComponent},
- {path:'edit/:id',
- component:EditComponent
- },
- {path:'add',
- component:AddComponent
- }
-
-
+ component:DiplaycrudComponent}
 
 ];
 

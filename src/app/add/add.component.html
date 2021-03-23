@@ -1,36 +1,59 @@
 
-<div class="fisrt">
-  <div class="second">
-    <div class="title">Add New Student</div>
-    <form #formname="ngForm">
-      <div class="form-group">
-        <label for="id">ID</label><input class="form-control" ngModel name="id" #ID="ngModel" id="id" type="number" >
+<div class="cont">
+  <div mat-dialog-title class="title">Edit student</div>
+  <mat-dialog-content>
+  <form #formname="ngForm">
+    <div class="form-group" >
+      <label for="id">ID</label>
+      <input class="form-control" required ngModel name="id" #ID="ngModel" id="id" type="number">
+      <div class="alert" *ngIf="ID.touched&&!ID.valid">
+        <div *ngIf="ID.errors?.required">this field is required</div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="names">Name</label><input  class="form-control" ngModel name="name" #NamE="ngModel"  id="names" type="text" >
+    <div class="form-group">
+      <label for="names">Name</label>
+      <input  class="form-control" required  ngModel name="name" #NamE="ngModel"  id="names" type="text">
+      <div class="alert" *ngIf="NamE.touched&&!NamE.valid">
+        <div *ngIf="NamE.errors?.required">this field is required</div>
       </div>
-
-      <div class="form-group">
-        <label for="classs">Classs</label><input  class="form-control" ngModel name="clas" #ClasS="ngModel"  id="classs" type="text">
+    </div>
+    <div class="form-group">
+      <label for="classs">Classs</label>
+      <input  class="form-control" required  ngModel name="clas" #ClasS="ngModel"  id="classs" type="text">
+      <div class="alert" *ngIf="ClasS.touched&&!ClasS.valid">
+        <div *ngIf="ClasS.errors?.required">this field is required</div>
       </div>
+    </div>
 
-        <div ngModelGroup="course" #subform="ngModelGroup">
-          <div class="form-group">
-            <label for="courses">coursename</label><input  class="form-control" ngModel name="coursename" #CoursE="ngModel"  id="courses" type="text">
+      <div ngModelGroup="course" #subform="ngModelGroup">
+        <div class="form-group">
+          <label for="courses">coursename</label>
+          <input  class="form-control" required  ngModel name="coursename" #CoursE="ngModel"  id="courses" type="text">
+          <div class="alert" *ngIf="CoursE.touched&&!CoursE.valid">
+            <div *ngIf="CoursE.errors?.required">this field is required</div>
           </div>
-
-          <div class="form-group">
-            <label for="outs">Out-of</label><input  class="form-control" ngModel name="outof" #OuT="ngModel"  id="outs" type="number" >
-          </div>
-
-          <div class="form-group">
-            <label for="results">Result</label><input  class="form-control" ngModel name="result" #ResulT="ngModel"  id="results" type="number">
-          </div>
-
         </div>
-      <a (click)="addnewstudent(formname.value)" routerLink='/table'><button class="btn btn-info">Submit</button></a>
-    </form>
 
-  </div>
+        <div class="form-group">
+          <label for="outs">Out-of</label>
+          <input  class="form-control" required  ngModel name="outof" #OuT="ngModel"  id="outs" type="number">
+          <div class="alert" *ngIf="OuT.touched&&!OuT.valid">
+            <div *ngIf="OuT.errors?.required">this field is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="results">Result</label>
+          <input  class="form-control" required  ngModel name="result" #ResulT="ngModel"  id="results" type="number">
+           <div class="alert" *ngIf="ResulT.touched&&!ResulT.valid">
+            <div *ngIf="ResulT.errors?.required">this field is required</div>
+          </div>
+        </div>
+      </div>
+    <a><button [disabled]="!formname.valid" mat-dialog-actions mat-dialog-close [mat-dialog-close]="formname.value" class="btn btn-info">Submit</button></a>
+  </form>
+</mat-dialog-content>
 </div>
+
+

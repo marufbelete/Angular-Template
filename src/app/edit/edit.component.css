@@ -1,4 +1,4 @@
-.first {
+/* .first {
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -20,4 +20,15 @@ button {
   color: rgb(46, 164, 243);
   font-size: xx-large;
   margin-left: 140px;
+} */
+.cont {
+  width: 500px;
+  height: 600px;
+}
+mat-dialog-content {
+  padding: 0px;
+  margin: 0px;
+}
+.alert {
+  color: red;
 }

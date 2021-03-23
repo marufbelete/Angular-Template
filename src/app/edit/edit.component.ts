@@ -1,8 +1,7 @@
-import { CrudService} from './../crud.service';
+import { CrudService, obj } from './../crud.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { RepositionScrollStrategy } from '@angular/cdk/overlay';
-
+import { Component, OnInit,Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog'
 @Component({
   selector: 'edit',
   templateUrl: './edit.component.html',
@@ -11,7 +10,8 @@ import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 export class EditComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,
-             private service:CrudService
+             private service:CrudService,
+             @Inject(MAT_DIALOG_DATA) public student:obj
              ) { }
 
   id:any
@@ -21,24 +21,20 @@ export class EditComponent implements OnInit {
   outof:any
   result:any
   ngOnInit() {
+    console.log("indialogcomp")
+  console.log(this.student)
+   this.id=this.student.id
+  this.name=this.student.name
+   this.clas=this.student.clas
+   this.coursename=this.student.course.coursename
+   this.outof=this.student.course.outof
+   this.result=this.student.course.result
 
-let ID=this.route.snapshot.paramMap.get('id')
- this.service.getdatabyid(ID)
- .subscribe(response=>{
-   console.log(response)
-   this.id=response.id
-  this.name=response.name
-   this.clas=response.clas
-   this.coursename=response.course.coursename
-   this.outof=response.course.outof
-   this.result=response.course.result
- })
-
+// let ID=this.route.snapshot.paramMap.get('id')
+//  this.service.getdatabyid(ID)
+//  .subscribe(this.student=>{
+//    console.log(this.student)
+//  })
   }
-update(val:any)
-{
-  this.service.updatedata(val.id,val)
-  .subscribe()
-}
 
 }

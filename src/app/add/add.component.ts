@@ -12,11 +12,11 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  addnewstudent(val:object)
-  {
-    console.log(val)
-    console.log(typeof(val))
-    this.service.postdata(val)
-    .subscribe()
-  }
+  // addnewstudent(val:object)
+  // {
+  //   console.log(val)
+  //   console.log(typeof(val))
+  //   this.service.postdata(val)
+  //   .subscribe()
+  // }
 }
