@@ -1,40 +1,19 @@
+import { PlselectComponent } from './../plselect/plselect.component';
+import { MultdeleteComponent } from './../multdelete/multdelete.component';
 import { AddComponent } from './../add/add.component';
 import { DeleteComponent } from './../delete/delete.component';
 import { EditComponent } from './../edit/edit.component';
 import { CrudService, obj} from './../crud.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,} from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-
-
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
-
-
-
+import { MatTableDataSource} from '@angular/material/table'
+import { MatSort} from '@angular/material/sort'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomVlidation } from './custumValidation'
 @Component({
   selector: 'display',
   templateUrl: './diplaycrud.component.html',
@@ -48,21 +27,88 @@ export class DiplaycrudComponent implements OnInit {
   //   const day=date.getDay()
   //   return day!=0 &&day!=6
   // }
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+form!:FormGroup
   constructor(private service:CrudService,
-      private snack:MatSnackBar,
-      private dialog:MatDialog
+    private snack:MatSnackBar,
+    private dialog:MatDialog,
+    private fb:FormBuilder
+) { }
 
-    ) { }
+courses:any[]=[{name:"Python"},{name:"Java"},{name:"Php"}]
+open:boolean=false
+students:any[]=[]
+isChecked:boolean=false
+sstudent:any[]=[]
+ngOnInit() {
+  // for filter for auto complete
+  //  this.filteredlanguage=this.control.valueChanges.pipe(
+  //    startWith(''),
+  //    map(valu=>this._filter(valu))
+  //  )
+    // this.form = this.fb.group({
+    //     NAME: ['',[Validators.required, CustomVlidation.mustMatch,CustomVlidation.conatin]],
+    // })
+    this.service.getdata()
+       .subscribe(response =>
+        {
+          this.students=response
+          this.students.forEach(result=>{
+            this.sstudent.push(result)
+          })
+          console.log(this.students)
 
+        });
+
+    }
+// search(data:string)
+// {
+//  this.dataSource.filter=data.trim().toLowerCase()
+// }
+
+sear:any
+search(ser:any)
+{
+  this.sear=ser.toLowerCase()
+
+  if(ser)
+  {
+  this.students.forEach(res=>{
+    // console.log(this.sear)
+    if((String(res.id).indexOf(this.sear)>-1 || res.name.toLowerCase().indexOf(this.sear)>-1 ||res.clas.toLowerCase().indexOf(this.sear)>-1 ||res.course.coursename.toLowerCase().indexOf(this.sear)>-1 ||String(res.course.outof).indexOf(this.sear)>-1 ||String(res.course.result).indexOf(this.sear)>-1))
+  {
+    if(this.sstudent.indexOf(res)==-1)
+    this.sstudent.push(res)
+  }
+  else if(!(String(res.id).indexOf(this.sear)>-1 || res.name.toLowerCase().indexOf(this.sear)>-1 ||res.clas.toLowerCase().indexOf(this.sear)>-1 ||res.course.coursename.toLowerCase().indexOf(this.sear)>-1 ||String(res.course.outof).indexOf(this.sear)>-1 ||String(res.course.result).indexOf(this.sear)>-1))
+  {
+    if((this.sstudent.indexOf(res)>-1) )
+     this.sstudent.splice(this.sstudent.indexOf(res),1)
+  }
+  })
+}
+else if(ser=='')
+{
+  this.students.forEach(result=>{
+    if((this.sstudent.indexOf(result)==-1))
+    this.sstudent.push(result)
+  })
+}
+}
+text(val:any)
+{
+  console.log(val)
+}
+checkedstud:any[]=[]
     openadd()
     {
 
-    let dialogRef=this.dialog.open(AddComponent)
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.width='570px'
+      dialogConfig.height='700px'
+
+    let dialogRef=this.dialog.open(AddComponent,dialogConfig)
     dialogRef.afterClosed().subscribe(result=>{
-      console.log(result)
+      // console.log(result)
       if(result)
       {
       this.postrow(result)
@@ -70,9 +116,11 @@ export class DiplaycrudComponent implements OnInit {
         })
    }
 
-
     openedit(student:obj)
     {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.width='570px'
+      dialogConfig.height='700px'
   let dialogRef=this.dialog.open(EditComponent,{data:student})
   dialogRef.afterClosed().subscribe(result=>{
 
@@ -105,41 +153,98 @@ opendelete(student:any)
 
   opensnack(message:any,action:any)
   {
-    let sanckBarRef= this.snack.open('item is deleting press undo to stop',action,{duration:3000})
+    let sanckBarRef= this.snack.open('item is deleting click undo to stop',action,{duration:3000})
     let smt=sanckBarRef.afterDismissed().subscribe((response)=>{
       this.deleterow(message)
+      // console.log(response)
       // console.log("deletion will take place")
     })
    sanckBarRef.onAction().subscribe((response)=>{
-    console.log("nothing will happen")
+    // console.log("nothing will happen")
     smt.unsubscribe()
    })
   }
+
+chane()
+{
+  if(this.isChecked)
+  {
+  this.students.forEach(val=>{
+    if(this.checkedstud.indexOf(val)==-1)
+    {this.checkedstud.push(val)}})
+    console.log(this.checkedstud)
+  }
+  else
+  {
+    this.checkedstud=[]
+  }
+}
+  chan(even:any,student:any)
+  {
+    if(even.target.checked)
+    {
+      this.checkedstud.push(student)
+    console.log(this.checkedstud)
+    console.log(this.students.indexOf(student))
+    }
+    else
+    {
+      this.checkedstud.splice(this.checkedstud.indexOf(student),1)
+      console.log(this.checkedstud)
+    }
+  }
+multipledelete()
+{
+  const dialogConfig = new MatDialogConfig();
+      dialogConfig.width='370px'
+      dialogConfig.height='200px'
+      if(this.checkedstud.length!=0)
+  {
+    console.log(this.checkedstud.length)
+      let dialogRef=this.dialog.open(MultdeleteComponent,dialogConfig)
+      dialogRef.afterClosed().subscribe(result=>{
+
+        if(result==='ok')
+        {
+      this.opensnacmd('multiple item is deleting click undo to stop','undo')
+        }
+
+      })
+    }
+    else
+    {
+      this.dialog.open(PlselectComponent,dialogConfig)
+    }
+}
+
+opensnacmd(message:any,action:any)
+{
+
+  let sanckBarRef= this.snack.open(message,action,{duration:3000})
+  let smt=sanckBarRef.afterDismissed().subscribe((response)=>{
+    this.checkedstud.forEach(val=>this.deleterow(val))
+    console.log(response)
+    // console.log("deletion will take place")
+  })
+ sanckBarRef.onAction().subscribe((response)=>{
+  // console.log("nothing will happen")
+  smt.unsubscribe()
+  console.log(response)
+ })
+
+
+}
+
+
 
   option:any
   // for filter for auto complete
   // learnlanguage:string[]=['python','php','rubby','html','javascript','java','c','c#']
   // filteredlanguage:any;
   // control=new FormControl()
-  courses:any[]=[{name:"Python"},{name:"Java"},{name:"Php"}]
-open:boolean=false
-students:any[]=[]
-isChecked:boolean=false
-  ngOnInit() {
-// for filter for auto complete
-//  this.filteredlanguage=this.control.valueChanges.pipe(
-//    startWith(''),
-//    map(valu=>this._filter(valu))
-//  )
 
-  this.service.getdata()
-     .subscribe(response =>
-      {
-        this.students=response
 
-      });
-      this.dataSource=this.students
-  }
+  get f() { return this.form.controls; }
   // for filter for auto complete
 //   private _filter(val:string)
 //   {
@@ -191,9 +296,9 @@ postrow(Post:object)
 //  {
 //    this.service.updatedata()
 //  }
-  call(som:any)
+  call(ev:any)
   {
-    this.isChecked=som.target.checked
+    this.isChecked=ev.target.checked
   }
 }
 

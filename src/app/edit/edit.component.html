@@ -1,7 +1,7 @@
 
 <div class="cont">
     <div mat-dialog-title class="title">Edit student</div>
-    <mat-dialog-content>
+    <div class="clos"><a mat-dialog-close class="close" mat-raised-button>X</a></div>
     <form #formname="ngForm">
       <div class="form-group" >
         <label for="id">ID</label>
@@ -51,9 +51,9 @@
             </div>
           </div>
         </div>
-      <a><button [disabled]="!formname.valid" mat-dialog-actions mat-dialog-close [mat-dialog-close]="formname.value" class="btn btn-info">Submit</button></a>
+      <a><button mat-mat-raised-button [disabled]="!formname.valid" mat-dialog-actions mat-dialog-close [mat-dialog-close]="formname.value">Submit</button></a>
     </form>
-  </mat-dialog-content>
+
 </div>
 
 

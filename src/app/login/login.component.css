@@ -1,9 +1,24 @@
-.first {
+.contain {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(138, 59, 212);
+  width: 100vh;
+}
+.welcome {
+  width: 50%;
+  position: relative;
+  left: 380px;
+  top: 120px;
+  font-size: xx-large;
+  color: rgba(0, 0, 0, 0.603);
+}
+.second {
+  width: 60%;
+  position: relative;
+  left: 450px;
+  top: 200px;
+}
+.subcontain {
+  height: 100vh;
+  background-color: rgba(219, 240, 240, 0.445);
 }
 input {
   width: 400px;

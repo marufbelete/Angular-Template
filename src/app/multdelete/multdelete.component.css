@@ -1,0 +1,25 @@
+.main {
+  margin-left: 70px;
+}
+mat-dialog-content {
+  padding-top: 10px;
+}
+mat-dialog-actions {
+  margin-top: 10px;
+}
+.cancel {
+  margin-left: 35px;
+}
+
+.green {
+  background-color: rgba(47, 86, 200, 0.692);
+}
+.red {
+  background-color: rgba(230, 17, 17, 0.596);
+}
+.title {
+  padding-left: 10px;
+}
+span {
+  font-size: large;
+}

@@ -9,7 +9,6 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(private route:Router) { }
-patt:string="maruf45913839"
   ngOnInit(): void {
     console.log()
   }
@@ -22,6 +21,5 @@ this.route.navigate(['/table'])
 }
 
 }
-
 
 }

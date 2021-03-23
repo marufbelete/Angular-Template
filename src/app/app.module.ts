@@ -14,7 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
 import { AddComponent } from './add/add.component';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MultdeleteComponent } from './multdelete/multdelete.component';
+import { PlselectComponent } from './plselect/plselect.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,12 +24,16 @@ import { AddComponent } from './add/add.component';
     LoginComponent,
     EditComponent,
     DeleteComponent,
-    AddComponent
+    AddComponent,
+    MultdeleteComponent,
+    PlselectComponent
   ],
   entryComponents:[
     EditComponent,
     DeleteComponent,
-    AddComponent
+    AddComponent,
+    MultdeleteComponent,
+    PlselectComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,8 @@ import { AddComponent } from './add/add.component';
     HttpClientModule,
     FormsModule,
     MatrialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
 
   ],
   providers: [CrudService],

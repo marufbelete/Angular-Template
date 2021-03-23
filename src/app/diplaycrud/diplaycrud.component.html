@@ -2,9 +2,7 @@
     <mat-sidenav mode="side" [(opened)]="open" >Side</mat-sidenav>
 
     <mat-sidenav-content> -->
-      <button mat-raised-button (click)="open=!open" >three</button>
-      <div class="main">
-        <div>
+
           <!-- <mat-menu #display="matMenu"> -->
             <!-- tomake it more dynamic -->
             <!-- <button mat-menu-item  [matMenuTriggerData]="{name:'Maruf'}" [matMenuTriggerFor]="submenu">Front-End</button>
@@ -184,104 +182,188 @@
          <mat-icon>grade</mat-icon> -->
 
 
-
-         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+         <!-- <mat-form-field>
+          <input #ser (keyup)="search(ser.value)"  matInput placeholder="Search...">
+        </mat-form-field>
+<div class="mat-elevation-z8">
+         <table mat-table matSort [dataSource]="dataSource"> -->
 
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
           <!-- Position Column -->
-          <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
+          <!-- <ng-container matColumnDef="position">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element"> {{element.position}} </td>
           </ng-container>
 
           <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+          <!-- <ng-container matColumnDef="name">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-          </ng-container>
+          </ng-container> -->
 
           <!-- Weight Column -->
-          <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <!-- <ng-container matColumnDef="weight">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Weight </th>
             <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-          </ng-container>
+          </ng-container> -->
 
           <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
+          <!-- <ng-container matColumnDef="symbol">
             <th mat-header-cell *matHeaderCellDef> Symbol </th>
             <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-          </ng-container>
+          </ng-container> -->
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <!-- <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button color="primary" (click)="addNew()">
+                <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+              </button>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button color="accent" (click)="startEdit()">
+                <mat-icon aria-label="Edit">edit</mat-icon>
+              </button>
+
+              <button mat-icon-button color="accent" (click)="deleteItem()">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container> -->
+
+
+
+          <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+         <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+        </div>  -->
+
+<!--
+        <td><a  mat-raised-button (click)="opendelete(student)">
+          <li class="icond fa fa-trash"></li></a></td> -->
 
 
 
 
+<!-- <cdk-virtual-scroll-viewport itemSize="100">
+  <div *cdkVirtualFor="let student of students"></div>
+
+</cdk-virtual-scroll-viewport> -->
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="open">
+    <span>Side Content</span>
+    <mat-nav-list>
+     <a class="logout" routerLink="/" mat-list-item >Home</a>
+     <a class="logout" routerLink="/" mat-list-item >About-us</a>
+     <a class="logout" routerLink="/" mat-list-item >Service</a>
+     <a class="logout" routerLink="/" mat-list-item >Contact</a>
+  </mat-nav-list>
+  </mat-sidenav>
 
 
-
-         <div>this is title</div>
-         <h1 class="title"> Student Mangment System</h1>
-          <div class="row left">
-
-
-         <div class="addnew">Add New Student
-          <a (click)="openadd()">
-           <button mat-raised-button>Add <li class="iconem fa fa-plus-square"></li></button> </a>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <a mat-raised-button (click)="open=!open"><span>Side-nav</span></a>
+      <div class="logdiv">
+         <a class="logout" routerLink="/" mat-button >Home</a>
+         <a class="logout" routerLink="/" mat-button >About-us</a>
+         <a class="logout" routerLink="/" mat-button >Service</a>
+         <a class="logout" routerLink="/" mat-button >Contact</a>
+         <a class="logout" routerLink="/" mat-button >Log-out</a>
         </div>
-       </div>
-       <div class="row left">
-        <div class="deletemult">Delete Multiple Student
-         <a >
-          <button mat-raised-button>Delete <li class="icondm fa fa-trash"></li></button> </a>
-       </div>
-      </div>
-        </div>
-        <div class="tabdiv">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-            <th>#</th>
-            <th>
-              <input [checked]="isChecked" (change)="call($event)" type="checkbox" name="main">
-              <br/>
-              </th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Class</th>
-            <th>Course</th>
-            <th>Out-of</th>
-            <th>Result</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let student of students;index as i">
-              <td>{{i+1}}</td>
-              <td><input [checked]="isChecked" type="checkbox" #check [value]="student.id">
-              </td>
-              <td>{{student.id}}</td>
-              <td>{{student.name}}</td>
-              <td>{{student.clas}}</td>
-              <td>{{student.course.coursename}}</td>
-              <td>{{student.course.outof}}</td>
-              <td>{{student.course.result}}</td>
-              <td><a mat-raised-button (click)="openedit(student)">
-                <li class="icone fa fa-edit"></li></a></td>
-              <td><a  mat-raised-button (click)="opendelete(student)">
-                <li class="icond fa fa-trash"></li></a></td>
-                <!-- mat-raised-button (click)="opensnack('one item is deleted','undo')" -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      </div>
+    </mat-toolbar>
 
+          <div class="main">
+
+            <div>
+             <div>
+             <h1 class="title"> Student Mangment System</h1>
+            </div>
+              <div class="row left">
+
+             <div class="addnew">Add New Student
+              <a (click)="openadd()">
+               <button mat-raised-button>Add <li class="iconem fa fa-plus-square"></li></button> </a>
+            </div>
+           </div>
+           <div class="row left">
+            <div class="deletemult">Delete Multiple Student
+             <a (click)="multipledelete()">
+              <button mat-raised-button>Delete <li class="icondm fa fa-trash"></li></button> </a>
+           </div>
+          </div>
+            </div>
+            <div class="tabdiv">
+              <div class="ser"><input class="form-control Ser" type="search" #ser (keyup)="search(ser.value)" placeholder="Search..."></div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                <th>#</th>
+                <th>
+                  <input [checked]="isChecked" (change)="call($event);chane()" type="checkbox" name="main">
+                  <br/>
+                  </th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Course</th>
+                <th>Out-of</th>
+                <th>Result</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+                <!-- to find the innertext value
+                #ID (click)="text(ID.innerText)" -->
+                <tr *ngFor="let student of sstudent;index as i">
+                  <td >{{i+1}}</td>
+                  <td><input (change)="chan($event,student)" [checked]="isChecked" type="checkbox" #check [value]="student.id">
+                  </td>
+                  <td>{{student.id}}</td>
+                  <td>{{student.name}}</td>
+                  <td>{{student.clas}}</td>
+                  <td>{{student.course.coursename}}</td>
+                  <td>{{student.course.outof}}</td>
+                  <td>{{student.course.result}}</td>
+                  <td><a mat-raised-button (click)="openedit(student)">
+                    <li class="icone fa fa-edit"></li></a></td>
+                  <td><a  mat-raised-button (click)="opendelete(student)">
+                    <li class="icond fa fa-trash"></li></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+<!-- <form [formGroup]="form">
+  <div class="form-group">
+    <label>Name</label>
+  <input required type="text" class="form-control" formControlName='NAME'>
+  </div>
+  <div *ngIf="f.NAME.touched && !f.NAME.valid">
+    <div *ngIf="f.NAME.errors?.required">
+this field is required
+    </div>
+    <div *ngIf="f.NAME.errors?.validname">
+      this field must't conatin a space
+          </div>
+          <div *ngIf="f.NAME.errors?.cont">
+            this field must't conatin a mar
+                </div>
+  </div>
+</form>
+<div>name</div>
+<div>name</div>
+<div>name</div> -->
+  <!-- mat-raised-button (click)="opensnack('one item is deleted','undo')" -->
 
 
 

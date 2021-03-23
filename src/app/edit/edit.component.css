@@ -25,10 +25,25 @@ button {
   width: 500px;
   height: 600px;
 }
-mat-dialog-content {
-  padding: 0px;
-  margin: 0px;
-}
+
 .alert {
   color: red;
+}
+button {
+  position: relative;
+  left: 200px;
+  padding-left: 20px;
+  width: 60px;
+  background-color: rgba(46, 139, 86, 0.767);
+  border: none;
+}
+.close:hover {
+  background-color: red;
+}
+.close {
+  background-color: white;
+}
+.clos {
+  position: relative;
+  top: -60px;
 }

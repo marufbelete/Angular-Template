@@ -1,6 +1,9 @@
-<form #frm="ngForm" (ngSubmit)="submited(frm)">
+<div class="conatin">
+  <div class="subcontain">
+<div class="welcome">Welcome To Student Managment Systetm</div>
 <div class="first">
   <div class="second">
+<form #frm="ngForm" (ngSubmit)="submited(frm)">
     <div class="form-group">
       <label for="named">Email
         <input required pattern="beletemaruf@gmail.com" ngModel name="emai" #email="ngModel" id="named" type="text" class="form-control">
@@ -23,8 +26,11 @@
   </div>
 
     <button class="btn btn-info">Log-in</button>
-  </div>
-</div>
+
 </form>
+</div>
+</div>
+</div>
+</div>
 
 

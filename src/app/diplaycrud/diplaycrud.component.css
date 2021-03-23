@@ -1,9 +1,22 @@
+.mat-sidenav-container {
+  max-width: 100%;
+  background-color: rgba(165, 42, 42, 0.199);
+}
+
 .main {
   /* padding: 0px;
   margin: 0px; */
   height: 100vh;
   width: 100vh;
   /* background-color: rgb(212, 233, 220); */
+}
+/* mat-toolbar {
+
+} */
+.logdiv {
+  position: absolute;
+  width: 400px;
+  left: 900px;
 }
 mat-datepicker-toggle {
   font-size: x-large;
@@ -12,18 +25,21 @@ a {
   text-decoration: none;
 }
 .title {
+  width: 400px;
   position: relative;
   top: 20px;
   left: 140px;
   /* color: rgba(9, 71, 51, 0.685); */
 }
 .addnew {
+  width: 350px;
   font-size: x-large;
   position: relative;
   left: 530px;
   top: 30px;
 }
 .deletemult {
+  width: 350px;
   font-size: x-large;
   position: relative;
   left: 480px;
@@ -34,15 +50,18 @@ mat-grid-tile {
   background-color: aqua;
 }
 .left {
+  width: 350px;
   position: relative;
   left: 200px;
-  color: rgb(144, 211, 255);
+  color: rgb(21, 124, 192);
 }
 table {
+  box-shadow: 2px -2px 2px rgba(10, 10, 10, 0.185),
+    -2px 2px 2px rgba(10, 10, 10, 0.322);
   position: relative;
   left: 300px;
   top: 50px;
-  width: 700px;
+  width: 750px;
 }
 .adding {
   color: rgba(41, 41, 163, 0.664);
@@ -71,14 +90,31 @@ table {
 thead {
   background-color: rgba(126, 93, 49, 0.589);
 }
-form {
-  position: relative;
-  top: 200px;
-  left: 100px;
-}
+
 button {
   border: none;
 }
 li {
   margin: 4px;
+}
+.logout:hover {
+  background-color: rgb(219, 216, 216);
+}
+mat-sidenav {
+  padding-left: 16px;
+  width: 200px;
+  background-color: rgba(153, 67, 52, 0.192);
+}
+mat-toolbar {
+  background-color: rgb(155, 155, 141);
+  min-width: 100%;
+}
+.ser {
+  margin-left: 200px;
+}
+.Ser {
+  width: 250px;
+  border: none;
+  box-shadow: 2px -2px 2px rgba(77, 50, 50, 0.185),
+    -2px 2px 2px rgba(10, 10, 10, 0.322);
 }

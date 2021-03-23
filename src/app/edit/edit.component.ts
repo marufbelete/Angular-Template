@@ -9,10 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog'
 })
 export class EditComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,
-             private service:CrudService,
-             @Inject(MAT_DIALOG_DATA) public student:obj
-             ) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private student:obj) { }
 
   id:any
   name:any
